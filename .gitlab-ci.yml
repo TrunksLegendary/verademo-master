@@ -24,14 +24,14 @@ Pipeline-Scan:
         -vid $VERACODE_API_KEY_ID -vkey $VERACODE_API_KEY_SECRET 
         --file ./app/target/verademo.war
 
-Policy-Scan:
-    image: veracode/api-wrapper-java:latest
-    stage: SAST Scan
-    only:
-        - schedules
-        - master
-    script:
-        - java -jar /opt/veracode/api-wrapper.jar -vid ${TEAM_ANALYSISCENTER_ID} -vkey ${TEAM_ANALYSISCENTER_KEY}
-          -action UploadAndScan -appname "Gitlab" -createprofile false -autoscan true
-          -filepath ./target/verademo.war -version "Job ${CI_JOB_ID} in pipeline ${CI_PIPELINE_ID}"
-          -scantimeout 15
+#Policy-Scan:
+#    image: veracode/api-wrapper-java:latest
+#    stage: SAST Scan
+#    only:
+#        - schedules
+#        - master
+#    script:
+#        - java -jar /opt/veracode/api-wrapper.jar -vid ${TEAM_ANALYSISCENTER_ID} -vkey ${TEAM_ANALYSISCENTER_KEY}
+#          -action UploadAndScan -appname "Gitlab" -createprofile false -autoscan true
+#          -filepath ./target/verademo.war -version "Job ${CI_JOB_ID} in pipeline ${CI_PIPELINE_ID}"
+#          -scantimeout 15
